@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./stylesheet.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>Login</h1>
+      <form name="logForm">
+        <!-- Success and failed message section -->
+        <p class="success">Success!. Welcome</p>
+        <p class="failed">Wrong Username/Password/Captcha</p>
+
+        <!-- Inputs for usernames and passwords -->
+        <input type="text" name="user" placeholder="Username" />
+        <input type="password" name="pass" placeholder="Password" />
+
+        <!-- Generated captcha section and input for captches typed -->
+        <div class="captcha">
+          <div id="captchaValue"></div>
+          <input id="inputCaptcha" type="text" name="" placeholder="Captcha" />
+        </div>
+
+        <!-- The submit button section -->
+        <button type="button" id="submitBtn">Submit</button>
+      </form>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
