@@ -51,7 +51,36 @@ let cVal5 = totalValue[Math.floor(Math.random() * totalValue.length)];
 
 let finalValue = cVal1 + cVal2 + cVal3 + cVal4 + cVal5;
 
-captchaValue.innerHTML = finalValue;
+// captchaValue.innerHTML = finalValue;
+
+//Making the text distorted with blotterJS
+let text = new Blotter.Text(finalValue, {
+  family: "Barracuda",
+  size: 30,
+  color: "black",
+  paddingLeft: 5,
+  paddingRight: 5,
+  paddingTop: 5,
+  paddingBottom: 5,
+});
+
+let material = new Blotter.ChannelSplitMaterial();
+
+material.uniforms.uOffset.value = 0.02;
+material.uniforms.uRotation.value = 20;
+material.uniforms.uAnimateNoise.value = 1; //Its used to animate noise in text
+material.uniforms.uApplyBlur.value = 1; //Its used for blur effect in text
+
+let blotter = new Blotter(material, {
+  texts: text,
+});
+let scope = blotter.forText(text);
+scope.appendTo(captchaValue);
+
+document.addEventListener("mousemove", (e) => {
+  material.uniforms.uOffset.value = e.clientX * 0.0001;
+  material.uniforms.uRotation.value = e.clientY * 0.1;
+});
 
 let valueInput = "";
 inputCaptcha.addEventListener("change", () => {
